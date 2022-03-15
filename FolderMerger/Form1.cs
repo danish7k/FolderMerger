@@ -71,7 +71,6 @@ namespace FolderMerger
                 MessageBox.Show("Please set the paths appropriately");
                 return;
             }
-            bool result = false;
             List<string> source1Folders = _sourceFolders[_source1FolderName].ToList();
             List<string> source2Folders = _sourceFolders[_source2FolderName].ToList();
             int count = 0;
@@ -84,7 +83,7 @@ namespace FolderMerger
                     count++;
             }
             progressBar.Minimum = 1;
-            progressBar.Maximum = (count * 2)-1;
+            progressBar.Maximum = (count * 2)+1;
             progressBar.Step = 1;
             progressBar.Visible = true;
 
@@ -123,7 +122,7 @@ namespace FolderMerger
                     //Now Create all of the directories
                     Directory.CreateDirectory(newPath);
                     
-                    //Copy all the files & Replaces any files with the same name
+                    //Copy all the files & ignore and skip copyif any files with the same name
                     foreach (FileInfo file in source1Dir.GetFiles())
                     {
                         FileInfo[] existingFile = targetDir.GetFiles(file.Name);
@@ -157,11 +156,6 @@ namespace FolderMerger
             _source2FolderName = string.Empty;
             _destinationFolderPath = string.Empty;
             _sourceFolders.Clear();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         public void UpdateUI(string value)

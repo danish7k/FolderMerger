@@ -147,7 +147,6 @@
             this.label4.Size = new System.Drawing.Size(84, 15);
             this.label4.TabIndex = 11;
             this.label4.Text = "O-Merger Tool";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // LogBox
             // 
